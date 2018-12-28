@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="open-result.jsp">
+	이름 <input type="text" name="name" /><br />
+	
+	<input type="submit" id="btn" value="Join"/>
+	</form>
 </body>
 </html>
