@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%System.out.println("member/main.jsp진입"); %>
 <!DOCTYPE html>
 <html>
 <head>
