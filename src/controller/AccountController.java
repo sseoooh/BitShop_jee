@@ -11,33 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 
-/**
- * Servlet implementation class AccountController
- */
 @WebServlet("/account.do")
 public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("***account서블릿로 진입***");
-		
-		String action = request.getParameter("action");
-		switch((action == null) ? "move" : action){
-		case "move" :
-			System.out.println(action);
-			System.out.println("액션이 이동");
-			Command.move(request, response, "account/main");
-			break;
-		
+		System.out.println("*** 어카운트 서블릿으로 들어옴 ***");
+		String cmd = request.getParameter("cmd");
+		String dir = request.getParameter("dir");
+		if(dir==null) {
+			dir = request.getServletPath();
+			String sPath = dir.replace(".do", "");
+			dir = sPath.substring(1);
+			System.out.println(dir);
+			
 		}
-	
+		
+		switch((cmd == null) ? "move": cmd) {
+		case "move":
+			System.out.println("액션이 이동");
+			Command.move(request, response, dir+"/main");
+			break;
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
